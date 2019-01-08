@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_search"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_search_white_24dp"
+        android:title="@string/search" />
+
+    <item android:id="@+id/action_favourite"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_star_white_24dp"
+        android:title="@string/favourite" />
+
+    <item android:id="@+id/action_settings"
+        app:showAsAction="never"
+        android:icon="@drawable/settings_icon"
+        android:title="@string/settings" />
+    <item android:id="@+id/action_rate"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_thumb_up"
+        android:title="Rate us" />
+
+    <item android:id="@+id/action_check"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_system_update"
+        android:title="Check for update" />
+</menu>

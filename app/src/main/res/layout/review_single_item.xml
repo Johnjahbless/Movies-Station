@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    app:cardUseCompatPadding="true"
+    style="@style/CardView.Light"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="190dp"
+    android:layout_marginStart="4dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:background="?attr/cardBgColor"
+        android:id="@+id/review_content_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/review_author_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="12dp"
+            android:textColor="?attr/primaryTextColor"
+            android:textSize="16sp"
+            tools:text="Frank Ochieng" />
+
+        <TextView
+            android:gravity="start"
+            android:layout_below="@+id/review_author_name"
+            android:id="@+id/review_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:maxLines="5"
+            android:lineSpacingExtra="5sp"
+            android:ellipsize="end"
+            android:fontFamily="@font/open_sans_regular"
+            android:textColor="?attr/secondaryTextColor"
+            app:layout_constraintLeft_toLeftOf="@id/review_author_name"
+            app:layout_constraintRight_toRightOf="@id/review_author_name"
+            app:layout_constraintTop_toBottomOf="@id/review_author_name"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/review_read_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/review_content"
+            android:layout_below="@+id/review_content"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@string/read_more"
+            android:clickable="true"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/review_content" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
