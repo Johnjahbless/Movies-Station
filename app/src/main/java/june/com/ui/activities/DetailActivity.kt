@@ -25,6 +25,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.InterstitialAd
@@ -143,30 +144,43 @@ class DetailActivity : AppCompatActivity(), OnReviewReadMoreClickListener, OnVid
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         setUpTransparentStatusBar(window)
+        val extras = Bundle()
+
+        extras.putString("max_ad_content_rating", "G")
         MobileAds.initialize(this,
                 "ca-app-pub-6317011955622736~6087087978")
         mAdView = findViewById(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
+        val adRequest = AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build()
         mAdView.loadAd(adRequest)
         MobileAds.initialize(this,
                 "ca-app-pub-6317011955622736~6087087978")
         mAdView = findViewById(R.id.adView2)
-        val adRequest2 = AdRequest.Builder().build()
+        val adRequest2 = AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build()
         mAdView.loadAd(adRequest2)
         MobileAds.initialize(this,
                 "ca-app-pub-6317011955622736~6087087978")
         mAdView = findViewById(R.id.adView3)
-        val adRequest3 = AdRequest.Builder().build()
+        val adRequest3 = AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build()
         mAdView.loadAd(adRequest3)
         MobileAds.initialize(this,
                 "ca-app-pub-6317011955622736~6087087978")
         mAdView = findViewById(R.id.adView4)
-        val adRequest4 = AdRequest.Builder().build()
+        val adRequest4 = AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build()
         mAdView.loadAd(adRequest4)
         MobileAds.initialize(this,
                 "ca-app-pub-6317011955622736~6087087978")
         mAdView = findViewById(R.id.adView5)
-        val adRequest5 = AdRequest.Builder().build()
+        val adRequest5 = AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build()
         mAdView.loadAd(adRequest5)
 
         getMovie()
@@ -272,11 +286,16 @@ class DetailActivity : AppCompatActivity(), OnReviewReadMoreClickListener, OnVid
 
         mSimilarMoviesBtn = findViewById(R.id.activity_similar_movie_text)
         mSimilarMoviesBtn.setOnClickListener({
+            val extras = Bundle()
+
+            extras.putString("max_ad_content_rating", "G")
             val similarIntent = Intent(this, SimilarMoviesActivity::class.java)
             similarIntent.putExtra("movie",movie)
             mInterstitialAd = InterstitialAd(this)
             mInterstitialAd.adUnitId = getString(R.string.admob_interstetial_ad)
-            mInterstitialAd.loadAd(AdRequest.Builder().build())
+            mInterstitialAd.loadAd(AdRequest.Builder()
+                    .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                    .build())
             if (mInterstitialAd.isLoaded) {
                 mInterstitialAd.show()
             }
@@ -354,9 +373,13 @@ class DetailActivity : AppCompatActivity(), OnReviewReadMoreClickListener, OnVid
         val id = item!!.itemId
         if (id == android.R.id.home) {
             onBackPressed()
+            val extras = Bundle()
+            extras.putString("max_ad_content_rating", "G")
             mInterstitialAd = InterstitialAd(this)
             mInterstitialAd.adUnitId = getString(R.string.admob_interstetial_ad)
-            mInterstitialAd.loadAd(AdRequest.Builder().build())
+            mInterstitialAd.loadAd(AdRequest.Builder()
+                    .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                    .build())
             if (mInterstitialAd.isLoaded) {
                 mInterstitialAd.show()
             }
@@ -460,9 +483,14 @@ class DetailActivity : AppCompatActivity(), OnReviewReadMoreClickListener, OnVid
 
                 // Verify the original intent will resolve to at least one activity
                 if (imdbIntent.resolveActivity(packageManager) != null) {
+                    val extras = Bundle()
+
+                    extras.putString("max_ad_content_rating", "G")
                     mInterstitialAd = InterstitialAd(this)
                     mInterstitialAd.adUnitId = getString(R.string.admob_interstetial_ad)
-                    mInterstitialAd.loadAd(AdRequest.Builder().build())
+                    mInterstitialAd.loadAd(AdRequest.Builder()
+                            .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                            .build())
                     if (mInterstitialAd.isLoaded) {
                         mInterstitialAd.show()
                     }
@@ -527,9 +555,13 @@ class DetailActivity : AppCompatActivity(), OnReviewReadMoreClickListener, OnVid
         })
     }
     private fun restartActivity(){
+        val extras = Bundle()
+        extras.putString("max_ad_content_rating", "G")
         mInterstitialAd = InterstitialAd(this)
         mInterstitialAd.adUnitId = getString(R.string.admob_interstetial_ad)
-        mInterstitialAd.loadAd(AdRequest.Builder().build())
+        mInterstitialAd.loadAd(AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build())
         if (mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
         }
@@ -541,12 +573,17 @@ class DetailActivity : AppCompatActivity(), OnReviewReadMoreClickListener, OnVid
         showReviewReadMoreBottomSheet(review)
     }
     override fun onVideoClickListener(movieVideo: MovieVideo) {
+        val extras = Bundle()
+
+        extras.putString("max_ad_content_rating", "G")
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(Helpers.buildYoutubeURL(movieVideo.key!!))
         startActivity(Intent.createChooser(intent, "View Trailer:"))
         mInterstitialAd = InterstitialAd(this)
         mInterstitialAd.adUnitId = getString(R.string.admob_interstetial_ad)
-        mInterstitialAd.loadAd(AdRequest.Builder().build())
+        mInterstitialAd.loadAd(AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build())
         if (mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
         }

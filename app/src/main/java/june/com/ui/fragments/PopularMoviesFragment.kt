@@ -21,6 +21,7 @@ import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.TextView
 import android.widget.Toast
+import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
@@ -93,10 +94,15 @@ class PopularMoviesFragment : Fragment(), OnMovieClickListener, SharedPreference
 
         networkService = NetworkService.instance
         mDatabase = AppDatabase.getInstance(context!!.applicationContext)
+        val extras = Bundle()
+
+        extras.putString("max_ad_content_rating", "G")
         MobileAds.initialize(context,
                 "ca-app-pub-6317011955622736~6087087978")
         mAdView = mMainView.findViewById(R.id.adVieww)
-        val adRequest = AdRequest.Builder().build()
+        val adRequest = AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build()
         mAdView.loadAd(adRequest)
     }
 

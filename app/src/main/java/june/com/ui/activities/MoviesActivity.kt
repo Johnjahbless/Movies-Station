@@ -18,6 +18,7 @@ import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.formats.MediaView
 import june.com.R
@@ -67,9 +68,13 @@ class MoviesActivity : AppCompatActivity(), SharedPreferences.OnSharedPreference
 
     }
     override fun onBackPressed() {
+        val extras = Bundle()
+        extras.putString("max_ad_content_rating", "G")
         mInterstitialAd = InterstitialAd(this)
         mInterstitialAd.adUnitId = getString(R.string.admob_interstitial_ad1)
-        mInterstitialAd.loadAd(AdRequest.Builder().build())
+        mInterstitialAd.loadAd(AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build())
         if (mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
         }
@@ -114,10 +119,14 @@ class MoviesActivity : AppCompatActivity(), SharedPreferences.OnSharedPreference
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId){
             R.id.action_settings -> {
+                val extras = Bundle()
+                extras.putString("max_ad_content_rating", "G")
                 val settingsIntent: Intent = Intent(this,SettingsActivity::class.java)
                 mInterstitialAd = InterstitialAd(this)
                 mInterstitialAd.adUnitId = getString(R.string.admob_interstitial_ad1)
-                mInterstitialAd.loadAd(AdRequest.Builder().build())
+                mInterstitialAd.loadAd(AdRequest.Builder()
+                        .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                        .build())
                 if (mInterstitialAd.isLoaded) {
                     mInterstitialAd.show()
                 }
@@ -125,10 +134,14 @@ class MoviesActivity : AppCompatActivity(), SharedPreferences.OnSharedPreference
             }
 
             R.id.action_favourite -> {
+                val extras = Bundle()
+                extras.putString("max_ad_content_rating", "G")
                 val favouriteIntent: Intent = Intent(this,FavouritesActivity::class.java)
                 mInterstitialAd = InterstitialAd(this)
                 mInterstitialAd.adUnitId = "ca-app-pub-6317011955622736/3186274653"
-                val adRequest = AdRequest.Builder().build()
+                val adRequest = AdRequest.Builder()
+                        .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                        .build()
                 mInterstitialAd.loadAd(adRequest)
                 mInterstitialAd.adListener = object : AdListener() {
                     @Override
@@ -143,10 +156,14 @@ class MoviesActivity : AppCompatActivity(), SharedPreferences.OnSharedPreference
             }
 
             R.id.action_search -> {
+                val extras = Bundle()
+                extras.putString("max_ad_content_rating", "G")
                 val searchIntent: Intent = Intent(this,SearchActivity::class.java)
                 mInterstitialAd = InterstitialAd(this)
                 mInterstitialAd.adUnitId = getString(R.string.admob_interstitial_ad1)
-                mInterstitialAd.loadAd(AdRequest.Builder().build())
+                mInterstitialAd.loadAd(AdRequest.Builder()
+                        .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                        .build())
                 if (mInterstitialAd.isLoaded) {
                     mInterstitialAd.show()
                 }

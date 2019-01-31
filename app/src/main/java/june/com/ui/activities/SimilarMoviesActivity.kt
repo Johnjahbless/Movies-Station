@@ -27,6 +27,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.InterstitialAd
@@ -92,10 +93,14 @@ class SimilarMoviesActivity : AppCompatActivity(), OnMovieClickListener, SharedP
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_similar_movies)
         Helpers.setUpTransparentStatusBar(window)
+        val extras = Bundle()
+        extras.putString("max_ad_content_rating", "G")
         MobileAds.initialize(this,
                 "ca-app-pub-6317011955622736~6087087978")
         mAdView = findViewById(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
+        val adRequest = AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build()
         mAdView.loadAd(adRequest)
         getMovie()
         initViews()
@@ -340,9 +345,14 @@ class SimilarMoviesActivity : AppCompatActivity(), OnMovieClickListener, SharedP
                     }
                 })
                 Toast.makeText(this,"Added", Toast.LENGTH_SHORT).show()
+                val extras = Bundle()
+
+                extras.putString("max_ad_content_rating", "G")
                 mInterstitialAd = InterstitialAd(this)
                 mInterstitialAd.adUnitId = getString(R.string.admob_interstetial_ad)
-                mInterstitialAd.loadAd(AdRequest.Builder().build())
+                mInterstitialAd.loadAd(AdRequest.Builder()
+                        .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                        .build())
                 if (mInterstitialAd.isLoaded) {
                     mInterstitialAd.show()
                 }
@@ -359,9 +369,14 @@ class SimilarMoviesActivity : AppCompatActivity(), OnMovieClickListener, SharedP
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item!!.getItemId()
         if (id == android.R.id.home) {
+            val extras = Bundle()
+
+            extras.putString("max_ad_content_rating", "G")
             mInterstitialAd = InterstitialAd(this)
             mInterstitialAd.adUnitId = getString(R.string.admob_interstetial_ad)
-            mInterstitialAd.loadAd(AdRequest.Builder().build())
+            mInterstitialAd.loadAd(AdRequest.Builder()
+                    .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                    .build())
             if (mInterstitialAd.isLoaded) {
                 mInterstitialAd.show()
             }
@@ -384,11 +399,16 @@ class SimilarMoviesActivity : AppCompatActivity(), OnMovieClickListener, SharedP
 
 
     override fun onMovieClickListener(movie: Movie) {
+        val extras = Bundle()
+
+        extras.putString("max_ad_content_rating", "G")
         val similarIntent = Intent(this, DetailActivity::class.java)
         similarIntent.putExtra("movie",movie)
         mInterstitialAd = InterstitialAd(this)
         mInterstitialAd.adUnitId = getString(R.string.admob_interstetial_ad)
-        mInterstitialAd.loadAd(AdRequest.Builder().build())
+        mInterstitialAd.loadAd(AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build())
         if (mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
         }
