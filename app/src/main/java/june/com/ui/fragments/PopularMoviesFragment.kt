@@ -98,7 +98,7 @@ class PopularMoviesFragment : Fragment(), OnMovieClickListener, SharedPreference
 
         extras.putString("max_ad_content_rating", "G")
         MobileAds.initialize(context,
-                "ca-app-pub-6317011955622736~6087087978")
+                "ca-app-pub-7446083837533381~6745788204")
         mAdView = mMainView.findViewById(R.id.adVieww)
         val adRequest = AdRequest.Builder()
                 .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)

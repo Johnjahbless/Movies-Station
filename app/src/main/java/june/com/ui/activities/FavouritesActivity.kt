@@ -72,7 +72,7 @@ class FavouritesActivity : AppCompatActivity(), OnMovieClickListener, SharedPref
 
         extras.putString("max_ad_content_rating", "G")
         MobileAds.initialize(this,
-                "ca-app-pub-6317011955622736~6087087978")
+                "ca-app-pub-7446083837533381~6745788204")
         mAdView = findViewById(R.id.adView)
         val adRequest = AdRequest.Builder()
                 .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)

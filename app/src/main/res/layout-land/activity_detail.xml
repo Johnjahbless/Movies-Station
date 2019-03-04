@@ -202,7 +202,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/activity_detail_ratings_linear_layout"
                 android:layout_centerHorizontal="true"
                 ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-6317011955622736/9395936698">
+                ads:adUnitId="ca-app-pub-7446083837533381/5767926066">
             </com.google.android.gms.ads.AdView>
             <TextView
                 android:id="@+id/activity_detail_overview_text"
@@ -351,7 +351,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/activity_detail_review_text"
                 android:layout_centerHorizontal="true"
                 ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-6317011955622736/9008800179"/>
+                ads:adUnitId="ca-app-pub-7446083837533381/6774720123"/>
             <RelativeLayout
                 android:layout_marginTop="4dp"
                 android:background="?attr/bgColor"
@@ -381,7 +381,7 @@
                     android:layout_below="@id/activity_detail_review_recycler_view"
                     android:layout_centerHorizontal="true"
                     ads:adSize="BANNER"
-                    ads:adUnitId="ca-app-pub-6317011955622736/9280262916">
+                    ads:adUnitId="ca-app-pub-7446083837533381/2252009422">
                 </com.google.android.gms.ads.AdView>
                 <ProgressBar
                     android:indeterminate="true"
@@ -497,7 +497,7 @@
                     android:layout_below="@id/activity_detail_crew_recycler_view"
                     android:layout_centerHorizontal="true"
                     ads:adSize="BANNER"
-                    ads:adUnitId="ca-app-pub-6317011955622736/4569973666">
+                    ads:adUnitId="ca-app-pub-7446083837533381/5803531189">
                 </com.google.android.gms.ads.AdView>
                 <ProgressBar
                     android:indeterminate="true"
@@ -606,7 +606,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/activity_similar_movie_text"
                 android:layout_centerHorizontal="true"
                 ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-6317011955622736/1030237803"/>
+                ads:adUnitId="ca-app-pub-7446083837533381/4546343737"/>
             <View
                 android:id="@+id/activity_similar_movie_text_bottom_view"
                 app:layout_constraintTop_toBottomOf="@+id/adView5"
