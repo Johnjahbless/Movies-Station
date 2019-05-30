@@ -7,8 +7,8 @@
     <string name="detail_backdrop_image">detail backdrop image</string>
     <string name="detail_movie_poster_image">detail movie poster image</string>
     <string name="activity_detail_poster_image">activity_detail_poster_image</string>
-    <string name="admob_interstetial_ad">ca-app-pub-6317011955622736/4499356320</string>
-    <string name="admob_interstitial_ad1">ca-app-pub-6317011955622736/3186274653</string>
+    <string name="admob_interstetial_ad">...</string>
+    <string name="admob_interstitial_ad1">...</string>
     <string name="overview">OVERVIEW</string>
     <string name="budget_k">budget: $---k</string>
     <string name="runtime_mins">runtime: ---mins</string>
